@@ -545,12 +545,14 @@ static NSDateFormatter* dateTimeFormatter = nil;
 #pragma mark -
 #pragma mark ListDialog
 
-- (void)createChannelListDialog
+- (void)showChannelListDialog
 {
 	if (!channelListDialog) {
 		channelListDialog = [ListDialog new];
 		channelListDialog.delegate = self;
+		[channelListDialog.window setTitle:[NSString stringWithFormat:@"Channels - %@", config.name]];
 		[channelListDialog start];
+		[self send:LIST, nil];
 	} else {
 		[channelListDialog show];
 	}
@@ -558,6 +560,7 @@ static NSDateFormatter* dateTimeFormatter = nil;
 
 - (void)listDialogOnUpdate:(ListDialog*)sender
 {
+	[sender clear];
 	[self sendLine:LIST];
 }
 
@@ -3947,7 +3950,7 @@ static NSDateFormatter* dateTimeFormatter = nil;
 				if (channelListDialog) {
 					[channelListDialog clear];
 				} else {
-					[self createChannelListDialog];
+					[self showChannelListDialog];
 				}
 			}
 			

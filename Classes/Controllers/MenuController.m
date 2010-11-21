@@ -694,8 +694,7 @@
 {
 	IRCClient* u = world.selectedClient;
 	if (!u) return;
-	[u createChannelListDialog];
-	[u send:LIST, nil];
+	[u showChannelListDialog];
 }
 
 - (void)onAddServer:(id)sender

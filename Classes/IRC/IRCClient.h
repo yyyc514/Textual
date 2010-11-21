@@ -188,7 +188,7 @@ typedef enum {
 - (IRCChannel*)findChannelOrCreate:(NSString*)name;
 - (IRCChannel*)findChannelOrCreate:(NSString*)name useTalk:(BOOL)doTalk;
 
-- (void)createChannelListDialog;
+- (void)showChannelListDialog;
 
 - (void)sendPrivmsgToSelectedChannel:(NSString*)message;
 

@@ -68,7 +68,7 @@
 
 - (void)addChannel:(NSString*)channel count:(NSInteger)count topic:(NSString*)topic
 {
-	NSArray* item = [NSArray arrayWithObjects:channel, [NSNumber numberWithInteger:count], [topic attributedStringWithIRCFormatting], nil];
+	NSArray* item = [NSArray arrayWithObjects:channel, [NSNumber numberWithInteger:count], topic, [topic attributedStringWithIRCFormatting], nil];
 	
 	NSString* filter = [filterText stringValue];
 	if (filter.length) {
@@ -225,8 +225,10 @@ static NSInteger compareItems(NSArray* self, NSArray* other, void* context)
 		return [item safeObjectAtIndex:0];
 	} else if ([col isEqualToString:@"count"]) {
 		return [item safeObjectAtIndex:1];
+	} else if ([col isEqualToString:@"topic"]) {
+		return [item safeObjectAtIndex:3];
 	} else {
-		return [item safeObjectAtIndex:2];
+		return @"";
 	}
 }
 
@@ -238,8 +240,10 @@ static NSInteger compareItems(NSArray* self, NSArray* other, void* context)
 		i = 0;
 	} else if ([col isEqualToString:@"count"]) {
 		i = 1;
-	} else {
+	} else if ([col isEqualToString:@"topic"]) {
 		i = 2;
+	} else {
+		return;
 	}
 	
 	if (sortKey == i) {
@@ -252,10 +256,13 @@ static NSInteger compareItems(NSArray* self, NSArray* other, void* context)
 	[self sort];
 	
 	if (filteredList) {
+		// this reloads the table
 		[self onSearchFieldChange:nil];
+	} else {
+		[self reloadTable];
 	}
 	
-	[self reloadTable];
+	
 }
 
 #pragma mark -
