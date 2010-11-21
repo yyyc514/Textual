@@ -593,6 +593,9 @@
 	NSDictionary* dic = [Preferences loadWindowStateWithName:@"MainWindow"];
 	
 	rootSplitter.position = 130;
+	if ([Preferences hideMemberList]) {
+		rootSplitter.position = 0;
+	}
 	
 	if (dic) {
 		NSInteger x = [dic intForKey:@"x"];

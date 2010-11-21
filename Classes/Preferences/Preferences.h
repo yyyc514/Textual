@@ -113,6 +113,9 @@ typedef enum {
 + (NSInteger)inlineImagesMaxWidth;
 + (void)setInlineImagesMaxWidth:(NSInteger)value;
 
+
++ (BOOL)hideMemberList;
++ (void)setHideMemberList:(BOOL)hide_member_list;
 + (NSString*)themeName;
 + (void)setThemeName:(NSString*)value;
 + (NSString*)themeLogFontName;

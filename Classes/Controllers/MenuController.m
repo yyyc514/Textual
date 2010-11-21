@@ -253,6 +253,11 @@
 				return c.isChannel;
 			}
 			break;
+		case 711: // show member list
+		{
+			[item setState:([Preferences hideMemberList] ? NSOffState : NSOnState)];
+			break;
+		}
 		case 2005:	// invite
 		{
 			if (!LOGIN || ![self checkSelectedMembers:item]) return NO;
@@ -465,6 +470,39 @@
 	} else {
 		[currentWindow performClose:nil];
 	}
+}
+
+- (void)makeTextLarger:(id)sender
+{
+	IRCChannel* c = world.selectedChannel;
+	if (c)
+		[c.log.view makeTextLarger:sender];
+}
+
+- (void)makeTextSmaller:(id)sender
+{
+	IRCChannel* c = world.selectedChannel;
+	if (c)
+		[c.log.view makeTextSmaller:sender];	
+}
+
+- (void)makeTextStandardSize:(id)sender
+{
+	IRCChannel* c = world.selectedChannel;
+	if (c)
+		[c.log.view makeTextStandardSize:sender];
+}
+
+- (void)toggleShowMemberList:(id)sender
+{
+	[Preferences setHideMemberList:![Preferences hideMemberList]];
+	if ([Preferences hideMemberList]) {
+		master.rootSplitter.position = 0;
+	} else {
+		master.rootSplitter.position = 130;
+	}
+	[sender setState:([Preferences hideMemberList] ? NSOffState : NSOnState)];
+
 }
 
 - (void)onPreferences:(id)sender

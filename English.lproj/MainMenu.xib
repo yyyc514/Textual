@@ -496,6 +496,27 @@
 									<reference key="NSMixedImage" ref="852898728"/>
 									<int key="NSTag">413</int>
 								</object>
+								<object class="NSMenuItem" id="521575556">
+									<reference key="NSMenu" ref="1043433546"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsSeparator">YES</bool>
+									<string key="NSTitle"/>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="222848805"/>
+									<reference key="NSMixedImage" ref="852898728"/>
+								</object>
+								<object class="NSMenuItem" id="380047255">
+									<reference key="NSMenu" ref="1043433546"/>
+									<bool key="NSIsAlternate">YES</bool>
+									<string key="NSTitle">Show channel members</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<int key="NSState">1</int>
+									<reference key="NSOnImage" ref="222848805"/>
+									<reference key="NSMixedImage" ref="852898728"/>
+									<int key="NSTag">711</int>
+								</object>
 							</array>
 						</object>
 					</object>
@@ -4401,6 +4422,14 @@
 					</object>
 					<int key="connectionID">1771</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleShowMemberList:</string>
+						<reference key="source" ref="361464326"/>
+						<reference key="destination" ref="380047255"/>
+					</object>
+					<int key="connectionID">1781</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -4875,6 +4904,8 @@
 							<reference ref="661884468"/>
 							<reference ref="84156800"/>
 							<reference ref="69206960"/>
+							<reference ref="521575556"/>
+							<reference ref="380047255"/>
 						</array>
 						<reference key="parent" ref="818320124"/>
 					</object>

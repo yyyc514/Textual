@@ -511,6 +511,18 @@ static NSMutableDictionary *commandIndex;
 #pragma mark -
 #pragma mark Theme
 
++ (BOOL)hideMemberList
+{
+	NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+	return [ud boolForKey:@"Preferences.UI.hide_member_list"];
+}
+
++ (void)setHideMemberList:(BOOL)hide_member_list
+{
+	NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+	[ud setBool :hide_member_list forKey:@"Preferences.UI.hide_member_list"];
+}
+
 + (NSString*)themeName
 {
 	NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];

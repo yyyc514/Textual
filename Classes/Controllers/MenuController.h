@@ -75,6 +75,11 @@
 
 - (void)onPreferences:(id)sender;
 
+- (void)makeTextLarger:(id)sender;
+- (void)makeTextSmaller:(id)sender;
+- (void)makeTextStandardSize:(id)sender;
+- (void)toggleShowMemberList:(id)sender;
+
 - (NSArray*)selectedMembers:(NSMenuItem*)sender;
 - (void)deselectMembers:(NSMenuItem*)sender;
 
