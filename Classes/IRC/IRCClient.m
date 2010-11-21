@@ -3960,6 +3960,9 @@ static NSDateFormatter* dateTimeFormatter = nil;
 			break;
 		}
 		case 323:	// RPL_LISTEND
+			if (channelListDialog) {
+				[channelListDialog listEnded];
+			}			
 			inList = NO;
 			break;
 		case 321:

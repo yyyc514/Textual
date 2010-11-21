@@ -39,7 +39,7 @@
 - (void)start
 {
 	[table setDoubleAction:@selector(onJoin:)];
-	
+	[[self progress] startAnimation:self];
 	[self show];
 }
 
@@ -64,6 +64,11 @@
 	filteredList = nil;
 	
 	[self reloadTable];
+}
+
+- (void)listEnded
+{
+	[[self progress] stopAnimation:self];
 }
 
 - (void)addChannel:(NSString*)channel count:(NSInteger)count topic:(NSString*)topic
@@ -162,6 +167,7 @@ static NSInteger compareItems(NSArray* self, NSArray* other, void* context)
 {
 	if ([delegate respondsToSelector:@selector(listDialogOnUpdate:)]) {
 		[delegate listDialogOnUpdate:self];
+		[[self progress] startAnimation:self];
 	}
 }
 
@@ -192,7 +198,7 @@ static NSInteger compareItems(NSArray* self, NSArray* other, void* context)
 		NSMutableArray* ary = [NSMutableArray new];
 		for (NSArray* item in list) {
 			NSString* channel = [item safeObjectAtIndex:0];
-			NSString* topic = [[item safeObjectAtIndex:2] string];
+			NSString* topic = [item safeObjectAtIndex:2];
 			if ([channel rangeOfString:filter options:NSCaseInsensitiveSearch].location != NSNotFound
 				|| [topic rangeOfString:filter options:NSCaseInsensitiveSearch].location != NSNotFound) {
 				[ary addObject:item];
@@ -277,6 +283,7 @@ static NSInteger compareItems(NSArray* self, NSArray* other, void* context)
 
 @synthesize list;
 @synthesize filteredList;
+@synthesize progress;
 @synthesize table;
 @synthesize filterText;
 @synthesize updateButton;

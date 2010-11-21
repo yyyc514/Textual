@@ -10,9 +10,11 @@
 	id delegate;
 	NSMutableArray* list;
 	NSMutableArray* filteredList;
+	
 	NSInteger sortKey;
 	NSComparisonResult sortOrder;
 	
+	IBOutlet NSProgressIndicator* progress;
 	IBOutlet ListView* table;
 	IBOutlet NSSearchField* filterText;
 	IBOutlet NSButton* updateButton;
@@ -24,6 +26,7 @@
 @property (nonatomic, readonly) NSComparisonResult sortOrder;
 @property (nonatomic, retain) NSMutableArray* list;
 @property (nonatomic, retain) NSMutableArray* filteredList;
+@property (nonatomic, retain) NSProgressIndicator* progress;
 @property (nonatomic, retain) ListView* table;
 @property (nonatomic, retain) NSSearchField* filterText;
 @property (nonatomic, retain) NSButton* updateButton;
@@ -35,6 +38,7 @@
 - (void)clear;
 
 - (void)addChannel:(NSString*)channel count:(NSInteger)count topic:(NSString*)topic;
+- (void)listEnded;
 
 - (void)onClose:(id)sender;
 - (void)onUpdate:(id)sender;
